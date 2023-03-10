@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 const ExpenseForm = () => {
+  //mutiple state approac
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -16,8 +17,40 @@ const ExpenseForm = () => {
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
   };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date:new Date(enteredDate)
+    }
+    console.log(expenseData);
+  }
+  //single state approach
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: "",
+  //   enteredAmount: "",
+  //   enteredDate: "",
+  // });
+  // const titleChangeHandler = (event) => {
+  //   setUserInput((prevState) => {
+  //     return { ...prevState, enteredTitle: event.target.value };
+  //   });
+  // };
+  // const amountChangeHandler = (event) => {
+  //   setUserInput((prevState) => {
+  //     return { ...prevState, enteredAmount: event.target.value };
+  //   });
+  // };
+
+  // const dateChangeHandler = (event) => {
+  //   setUserInput((prevState) => {
+  //     return { ...prevState, enteredDate: event.target.value };
+  //   });
+  // };
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
