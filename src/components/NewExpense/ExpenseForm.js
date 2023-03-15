@@ -52,6 +52,7 @@ const ExpenseForm = (props) => {
   //     return { ...prevState, enteredDate: event.target.value };
   //   });
   // };
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
@@ -84,10 +85,12 @@ const ExpenseForm = (props) => {
           ></input>
         </div>
         <div className="new-expense__actuibs">
+          <button type='button' onClick={props.onCancel}>Cancel</button>
           <button type="submit">Add Expense</button>
         </div>
       </div>
     </form>
+    // <div>{display}</div>
   );
 };
 export default ExpenseForm;
